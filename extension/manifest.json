@@ -1,0 +1,57 @@
+{
+  "manifest_version": 3,
+  "name": "Chrome Extension Starter",
+  "version": "1.0.0",
+  "description": "Chrome Extension Starter",
+  "action": {
+    "default_icon": "./assets/icon.png",
+    "default_popup": "./dist/popup/index.html"
+  },
+  "options_ui": {
+    "page": "./dist/options/index.html",
+    "open_in_tab": true
+  },
+  "icons": {
+    "16": "./assets/icon.png",
+    "48": "./assets/icon.png",
+    "128": "./assets/icon.png"
+  },
+  "background": {
+    "type": "module",
+    "service_worker": "dist/background/index.mjs"
+  },
+  "permissions": [
+    "storage",
+    "tabs",
+    "tabGroups",
+    "webNavigation",
+    "activeTab",
+    "declarativeNetRequest",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "dist/contentScripts/index.global.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "dist/inject/inject_script.js",
+        "dist/inject/style.css"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}

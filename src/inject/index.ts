@@ -1,0 +1,2 @@
+import './xhrScript'
+import './app'
