@@ -4,6 +4,8 @@ import './popup.css'
 import { Button } from '@douyinfe/semi-ui'
 import { getStorage } from '../util'
 import { CacheEnum } from '../constants/CacheEnum'
+import { sendMessage } from 'webext-bridge/popup'
+import { BridgeMessageEnum } from '../constants/MessageEnum'
 
 const Popup = () => {
   const [token, setToken] = useState<string>()
@@ -13,11 +15,14 @@ const Popup = () => {
       setToken(res)
     })
   })
+  const onSignIn = () => {
+    sendMessage(BridgeMessageEnum.AUTH, { dd: 1234 })
+  }
 
   return (
     <div className="p-4 min-w-[24rem]">
       dsadas
-      <Button type="primary" theme="solid">
+      <Button type="primary" theme="solid" onClick={onSignIn}>
         Sign In
       </Button>
     </div>

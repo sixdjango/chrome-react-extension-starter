@@ -35,7 +35,8 @@
   "content_scripts": [
     {
       "matches": [
-        "<all_urls>"
+        "*://localhost:*/*",
+        "*://*.google.com/*"
       ],
       "js": [
         "dist/contentScripts/index.global.js"
@@ -47,7 +48,7 @@
     {
       "resources": [
         "dist/inject/inject_script.js",
-        "dist/inject/style.css"
+        "dist/contentScripts/style.css"
       ],
       "matches": [
         "<all_urls>"

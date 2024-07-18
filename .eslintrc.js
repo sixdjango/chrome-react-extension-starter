@@ -2,6 +2,7 @@ module.exports = {
   root: true,
   extends: ['@yc-tech/eslint-config'].map(require.resolve),
   rules: {
-    '@typescript-eslint/no-unused-vars': 'off'
+    '@typescript-eslint/no-unused-vars': 'off',
+    'prefer-rest-params': 'off'
   }
 }
