@@ -17,8 +17,6 @@
     "build:web": "vite build",
     "build:js": "vite build --config vite.config.content.mts",
     "build:injectJs": "vite build --config vite.config.inject.content.mts",
-    "style": "prettier --check \"src/**/*.{ts,tsx}\"",
-    "style:fix": "prettier --write \"src/**/*.{ts,tsx}\"",
     "clear": "rimraf --glob extension/dist extension/manifest.json extension.*"
   },
   "author": "django",
