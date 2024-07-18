@@ -13,6 +13,7 @@
     "dev:background": "npm run build:background -- --mode development",
     "dev:injectJs": "npm run build:injectJs -- --mode development",
     "build": "cross-env NODE_ENV=production run-s clear build:web build:prepare build:background build:js build:injectJs",
+    "build:prepare": "esno scripts/prepare.ts",
     "build:background": "vite build --config vite.config.background.mts",
     "build:web": "vite build",
     "build:js": "vite build --config vite.config.content.mts",
