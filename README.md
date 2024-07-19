@@ -9,6 +9,7 @@ Chrome extension starter template with React, TypeScript, Vite and Tailwind.
 - Husky for commit check
 - Actions for build
 - Some utils to simplify Chrome API
+- Inject XHR for request interception
 
 ## Development
 
@@ -22,3 +23,7 @@ pnpm dev
 # Build
 pnpm build
 ```
+
+## Thanks
+
+- [vitesse-webext](https://github.com/antfu-collective/vitesse-webext) - by `antfu`
