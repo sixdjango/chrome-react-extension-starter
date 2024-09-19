@@ -9,6 +9,11 @@ onMessage(BridgeMessageEnum.AUTH, async () => {
   startTask(TaskTypeEnum.AUTH, `http://localhost:5173`)
 })
 
+onMessage(BridgeMessageEnum.START_TASK, async (data) => {
+  console.log('start task:', data)
+  sendMessage(BridgeMessageEnum.START_TASK, data.data, `content-script@${data.sender.tabId}`)
+})
+
 async function startTask(type: TaskTypeEnum, url: string, data: Record<string, any> = {}) {
   const tab = await tabs.create({
     url

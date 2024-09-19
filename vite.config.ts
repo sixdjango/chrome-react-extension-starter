@@ -27,7 +27,7 @@ export const sharedConfig: UserConfig = {
     }
   ],
   optimizeDeps: {
-    include: ['vue', '@vueuse/core', 'webextension-polyfill'],
+    include: ['react-dom', 'react', 'webextension-polyfill'],
     exclude: ['vue-demi']
   }
 }

@@ -1,14 +1,29 @@
+import { AtButton, YcIcon } from '@yc-tech/react-component'
 import React from 'react'
+import { configResponsive } from 'ahooks'
 import { createRoot } from 'react-dom/client'
 import './options.css'
-import { Button } from '@douyinfe/semi-ui'
+configResponsive({
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+  xxl: 1536
+})
 
 const Options = () => {
+  const onOpenOptions = () => {
+    chrome.runtime.openOptionsPage()
+  }
   return (
-    <div className="w-screen h-screen flex justify-center p-12">
-      <div className="w-full max-w-4xl flex flex-col gap-y-8">
-        <h1 className="text-4xl font-semibold border-b border-black pb-2">Google Maps dsad</h1>
-        <Button>Sign In</Button>
+    <div className="min-h-[100px] min-w-[20rem] bg-neutral-200 flex flex-col">
+      <div className="py-4 bg-white rounded-b-xl flex justify-center w-full flex-1"></div>
+      <div className="py-2 px-4 flex justify-between items-center">
+        <YcIcon
+          icon="mingcute:settings-3-line"
+          className="text-neutral-500 cursor-pointer"
+          onClick={onOpenOptions}
+        />
+        <span className="text-neutral-500 text-xs">v1.0.0</span>
       </div>
     </div>
   )

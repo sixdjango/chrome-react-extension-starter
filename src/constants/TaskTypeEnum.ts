@@ -1,3 +1,4 @@
 export enum TaskTypeEnum {
-  AUTH = 'AUTH'
+  AUTH = 'AUTH',
+  PING = 'PING'
 }

@@ -29,30 +29,18 @@
     "declarativeNetRequest",
     "scripting"
   ],
-  "host_permissions": [
-    "<all_urls>"
-  ],
+  "host_permissions": ["<all_urls>"],
   "content_scripts": [
     {
-      "matches": [
-        "*://localhost:*/*",
-        "*://*.google.com/*"
-      ],
-      "js": [
-        "dist/contentScripts/index.global.js"
-      ],
+      "matches": ["*://localhost:*/*", "*://*.google.com/*", "*://*.xero.com/*"],
+      "js": ["dist/contentScripts/index.global.js"],
       "run_at": "document_end"
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": [
-        "dist/inject/inject_script.js",
-        "dist/contentScripts/style.css"
-      ],
-      "matches": [
-        "<all_urls>"
-      ]
+      "resources": ["dist/inject/inject_script.js", "dist/contentScripts/style.css"],
+      "matches": ["<all_urls>"]
     }
   ]
 }

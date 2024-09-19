@@ -1,14 +1,8 @@
-import React, { useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
-import './inject.css'
+import './style.css'
 
+// 注入页面的 ui
 const App = () => {
-  useEffect(() => {
-    const info = localStorage.getItem('userInfo')
-    console.info('userdata:', info)
-    chrome.runtime.sendMessage({ data: info }, function (res) {})
-    window.postMessage({ response: info, type: 'GetUserInfo' }, '*')
-  }, [])
   return <div></div>
 }
 

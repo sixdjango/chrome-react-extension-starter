@@ -1,18 +1,13 @@
+import { Content2InjectMessage } from './types'
+
 /**
  * 重写ajax方法，以便在请求结束后通知content_script
  * inject_script无法直接与background通信，所以先传到content_script，再通过他传到background
  */
-export function injectXHR(
+function injectXHR(
   xhr: typeof XMLHttpRequest,
   options: { onResponse?: (url?: string, response?: any) => void; interceptPaths?: string[] }
 ): void {
-  const inGoogleMaps = window.location.href.includes('https://www.google.com/maps')
-
-  // 只有在google maps页面才进行xhr的重写
-  if (!inGoogleMaps) {
-    return
-  }
-
   const { onResponse, interceptPaths = [] } = options
   type ExtendedXMLHttpRequest = XMLHttpRequest & {
     _method?: string
@@ -37,9 +32,10 @@ export function injectXHR(
   ): void {
     this.addEventListener('load', function (this: ExtendedXMLHttpRequest) {
       const myUrl = this._url ? this._url.toLowerCase() : this._url
-      if (myUrl && interceptPaths.some((path) => myUrl.includes(path))) {
-        console.info('myUrl', myUrl)
-        console.info(this.response)
+      if (
+        myUrl &&
+        (interceptPaths.some((path) => myUrl.includes(path)) || interceptPaths.length === 0)
+      ) {
         if (this.responseType !== 'blob' && this.response) {
           // responseText is string or null
           try {
@@ -55,3 +51,9 @@ export function injectXHR(
     return send.apply(this, arguments as any)
   }
 }
+
+injectXHR(XMLHttpRequest, {
+  onResponse(url, response) {
+    window.postMessage({ data: { url, response }, type: 'response' } as Content2InjectMessage, '*')
+  }
+})

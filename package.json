@@ -24,7 +24,9 @@
   "license": "MIT",
   "homepage": "https://github.com/sixdjango/chrome-react-extension-starter",
   "dependencies": {
-    "@douyinfe/semi-ui": "^2.62.1",
+    "@yc-tech/react-component": "^0.1.70",
+    "@yc-tech/shared": "^0.1.16",
+    "ahooks": "^3.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
@@ -54,7 +56,7 @@
     "tailwindcss": "^3.4.6",
     "typescript": "^5.5.3",
     "vite": "^5.3.4",
-    "web-ext": "^8.2.0",
+    "web-ext": "^8.3.0",
     "webext-bridge": "^6.0.1",
     "webextension-polyfill": "^0.12.0"
   }

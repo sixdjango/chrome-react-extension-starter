@@ -42,7 +42,7 @@ export async function getManifest() {
     host_permissions: ['<all_urls>'],
     content_scripts: [
       {
-        matches: ['*://localhost:*/*', '*://*.google.com/*'],
+        matches: ['*://localhost:*/*', '*://*.google.com/*', '*://*.xero.com/*'],
         js: ['dist/contentScripts/index.global.js'],
         run_at: 'document_end'
       }
