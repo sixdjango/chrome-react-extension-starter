@@ -41,7 +41,7 @@ const Options = () => {
       <div className="py-2 px-4 flex justify-between items-center">
         <YcIcon
           icon="mingcute:settings-3-line"
-          className="text-neutral-500 cursor-pointer"
+          className="text-neutral-500 cursor-pointer w-5 h-5"
           onClick={onOpenOptions}
         />
         <span className="text-neutral-500 text-xs">v1.0.0</span>
