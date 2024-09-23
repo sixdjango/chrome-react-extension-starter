@@ -1,15 +1,18 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import '@yc-tech/react-component/dist/style.css'
+import '../preflight.css'
 import './popup.css'
 import { AtButton, YcIcon } from '@yc-tech/react-component'
 import { sendMessage } from 'webext-bridge/popup'
 import { BridgeMessageEnum } from '../constants/MessageEnum'
 import { StartTaskInfo } from '../types'
 import { TaskTypeEnum } from '../constants/TaskTypeEnum'
-import { tabs } from 'webextension-polyfill'
+import { cookies, tabs } from 'webextension-polyfill'
 
-const Options = () => {
+const Popup = () => {
+  const [c, setC] = React.useState('')
+
   const onOpenOptions = () => {
     chrome.runtime.openOptionsPage()
   }
@@ -31,12 +34,28 @@ const Options = () => {
       console.log('没有找到活动的标签页')
     }
   }
+
+  const getCookies = async () => {
+    const res = await cookies.getAll({ url: 'https://qbo.intuit.com' })
+    const newRes = res.map((item) => {
+      return {
+        name: item.name,
+        value: item.value
+      }
+    })
+    setC(JSON.stringify(newRes))
+    console.log('cookies:', newRes)
+  }
   return (
     <div className="min-h-[100px] min-w-[20rem] bg-neutral-200 flex flex-col">
       <div className="py-4 bg-white rounded-b-xl flex justify-center w-full flex-1">
         <AtButton size="sm" onClick={pingClick}>
           ping
         </AtButton>
+        <AtButton size="sm" onClick={getCookies}>
+          getCookies
+        </AtButton>
+        <div className=" break-all whitespace-pre-wrap">{c}</div>
       </div>
       <div className="py-2 px-4 flex justify-between items-center">
         <YcIcon
@@ -54,6 +73,6 @@ const root = createRoot(document.getElementById('root')!)
 
 root.render(
   <React.StrictMode>
-    <Options />
+    <Popup />
   </React.StrictMode>
 )

@@ -34,10 +34,13 @@ export async function getManifest() {
       'storage',
       'tabs',
       'tabGroups',
+      'webRequest',
+      'webRequestBlocking',
       'webNavigation',
       'activeTab',
       'declarativeNetRequest',
-      'scripting'
+      'scripting',
+      'cookies'
     ],
     host_permissions: ['<all_urls>'],
     content_scripts: [

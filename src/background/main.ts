@@ -1,9 +1,18 @@
-import { scripting, tabs } from 'webextension-polyfill'
+import { scripting, tabs, webRequest } from 'webextension-polyfill'
 import { BridgeMessageEnum } from '../constants/MessageEnum'
 import { onMessage, sendMessage } from 'webext-bridge/background'
 import { TaskTypeEnum } from '../constants/TaskTypeEnum'
 
 console.log('Hello from Background!')
+
+// 获取请求头
+webRequest.onBeforeSendHeaders.addListener(
+  function (details) {
+    console.log('Request Headers:', details.requestHeaders)
+  },
+  { urls: ['<all_urls>'] },
+  ['requestHeaders']
+)
 
 onMessage(BridgeMessageEnum.AUTH, async () => {
   startTask(TaskTypeEnum.AUTH, `http://localhost:5173`)

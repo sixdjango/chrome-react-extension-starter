@@ -2,6 +2,7 @@ import { AtButton, YcIcon } from '@yc-tech/react-component'
 import React from 'react'
 import { configResponsive } from 'ahooks'
 import { createRoot } from 'react-dom/client'
+import '../preflight.css'
 import './options.css'
 configResponsive({
   md: 768,

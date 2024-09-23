@@ -1,5 +1,7 @@
 import { createRoot } from 'react-dom/client'
+import '../preflight.css'
 import './style.css'
+import { useEffect } from 'react'
 
 // 注入页面的 ui
 const App = () => {
